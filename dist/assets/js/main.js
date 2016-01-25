@@ -1,0 +1,9 @@
+$(function(){
+	console.log("a.js");
+})
+$(function(){
+	console.log("b.js");
+})
+$(function(){
+	console.log("c.js");
+})

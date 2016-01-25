@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
 	sass = require('gulp-ruby-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
+/*    autoprefixer = require('gulp-autoprefixer'),*/
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
@@ -12,28 +12,28 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload');
 
-gulp.task('default',function(){
+
+var config = {
+    srcPath : {
+        scssSrcPath : ['src/styles/*.scss'],
+        cleanPath: ['dist/assets/css','dist/assets/js']
+    },
+    destPath : {
+        scssDestPath : ['dist/assets/css']
+    }
+}
+
+
+/*gulp.task('default',function(){
 	//tasks
-});
-
-
-gulp.task('sass',function(){
-	return gulp.src('src/styles/main.scss')
-	.pipe(sass({style: 'compressed'}))
-	.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-	.pipe(gulp.dest('dist/assets/css'))
-});
-
+});*/
 
 /***************************************
                 STYLES
 ***************************************/
 
 gulp.task('styles',function(){
-    return gulp.src('src/styles/main.scss')
-    .pipe(sass({ style: 'expanded' }))
-    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(gulp.dest('dist/assets/css'))
+    return sass(config.srcPath.scssSrcPath,{style: 'expanded'})
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
     .pipe(gulp.dest('dist/assets/css'))
@@ -78,7 +78,7 @@ gulp.task('images',function(){
 ***************************************/
 
 gulp.task('clean', function() {  
-  return gulp.src(['dist/assets/css', 'dist/assets/js', 'dist/assets/img'], {read: false})
+  return gulp.src(['dist/assets/css', 'dist/assets/js'], {read: false})
     .pipe(clean());
 });
 
@@ -89,7 +89,7 @@ gulp.task('clean', function() {
 ***************************************/
 
 gulp.task('default', ['clean'], function() {  
-    gulp.start('styles', 'scripts', 'images');
+    gulp.start('styles', 'scripts');
 });
 
 
