@@ -15,8 +15,7 @@ var gulp = require('gulp'),
 
 var config = {
     srcPath : {
-        scssSrcPath : ['src/styles/*.scss'],
-        cleanPath: ['dist/assets/css','dist/assets/js']
+        scssSrcPath : ['src/styles/*.scss']
     },
     destPath : {
         scssDestPath : ['dist/assets/css']
