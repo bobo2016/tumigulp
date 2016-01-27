@@ -22,3 +22,7 @@ sudo npm install gem
 
 7. install sass
 sudo gem install sass
+
+8. add .jshintrc file for js validation
+
+9. add gulpfile.js 

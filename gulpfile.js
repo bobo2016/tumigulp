@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
 	sass = require('gulp-ruby-sass'),
 /*    autoprefixer = require('gulp-autoprefixer'),*/
+    concatCss = require('gulp-concat-css'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
@@ -34,11 +35,11 @@ var config = {
 gulp.task('styles',function(){
     return sass(config.srcPath.scssSrcPath,{style: 'expanded'})
     .pipe(rename({suffix: '.min'}))
+    .pipe(concatCss('changes.css'))
     .pipe(minifycss())
     .pipe(gulp.dest('dist/assets/css'))
     .pipe(notify({ message: 'Styles task complete' }));
 });
-
 
 /***************************************
                 SCRIPTS
