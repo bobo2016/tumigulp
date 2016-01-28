@@ -15,7 +15,7 @@ sudo npm install gulp -g
 sudo npm install gulp --save-dev
 
 5. install all packages
-sudo npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-clean gulp-notify gulp-rename gulp-livereload gulp-cache --save-dev
+sudo npm install gulp gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-clean gulp-notify gulp-rename gulp-livereload gulp-cache gulp-concat-css --save-dev
 
 6. install gem
 sudo npm install gem
@@ -26,3 +26,5 @@ sudo gem install sass
 8. add .jshintrc file for js validation
 
 9. add gulpfile.js 
+
+10. run sudo gulp compass 

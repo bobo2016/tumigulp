@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	sass = require('gulp-ruby-sass'),
 /*    autoprefixer = require('gulp-autoprefixer'),*/
     concatCss = require('gulp-concat-css'),
+    gulpcompass = require('gulp-compass'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
@@ -11,7 +12,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    path = require('path');
 
 
 var config = {
@@ -40,6 +42,16 @@ gulp.task('styles',function(){
     .pipe(gulp.dest('dist/assets/css'))
     .pipe(notify({ message: 'Styles task complete' }));
 });
+
+gulp.task('compasscompile',function(){
+    gulp.src(config.srcPath.scssSrcPath)
+    .pipe(compass({
+        css: 'dist/assets/css',
+        sass: 'dist/assets/sass'
+    }))
+    .pipe(minifycss())
+    .pipe(gulp.dest('dist/assets/temp'));
+})
 
 /***************************************
                 SCRIPTS
