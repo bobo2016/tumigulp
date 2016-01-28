@@ -13,15 +13,17 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    path = require('path');
+    path = require('path'),
+    rjs = require('gulp-requirejs'),
+    amdOptimize =  require('amd-optimize');
 
 
 var config = {
     srcPath : {
-        scssSrcPath : ['src/styles/*.scss']
+        scssSrcPath : 'src/styles/*.scss'
     },
     destPath : {
-        scssDestPath : ['dist/assets/css']
+        scssDestPath : 'dist/assets/css'
     }
 }
 
@@ -69,6 +71,25 @@ gulp.task('scripts',function(){
     .pipe(notify({ message: 'Scripts task complete' }));
 }); 
 
+
+gulp.task('requirejsBuild', function(){
+    rjs({
+        baseUrl: 'src/scripts/**/*.js',
+        out:'output.js',
+        shim:{
+
+        }
+    })
+        .pipe(gulp.dest('dist/assets/js')); //pipe it to the output DIR
+})
+
+
+gulp.task('optimize',function(){
+    return gulp.src('src/scripts/**/*.js')
+        .pipe(amdOptimize("index"))
+        .pipe(concat("index.js"))
+        .pipe(gulp.dest("dist/assets/js"));
+})
 
 
 
