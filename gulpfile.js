@@ -45,6 +45,15 @@ gulp.task('styles',function(){
     .pipe(notify({ message: 'Styles task complete' }));
 });
 
+
+gulp.task('cssbuild', function(){
+    return gulp.src(['src/styles2/*.css','dist/assets/css/*.css'])
+        .pipe(concatCss('final.css'))
+        .pipe(minifycss())
+        .pipe(gulp.dest('dist/assets/css'))
+        .pipe(notify({message:'cssbuild task complete'}))
+});
+
 gulp.task('compasscompile',function(){
     gulp.src(config.srcPath.scssSrcPath)
     .pipe(compass({
