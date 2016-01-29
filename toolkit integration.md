@@ -8,14 +8,8 @@ sudo zypper in nodejs nodejs-devel
 sudo zypper install npm
 
 
-3. install gulp
-sudo npm install gulp -g
-
-4. install gulp 
-sudo npm install gulp --save-dev
-
-5. install all packages
-sudo npm install gulp gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-clean gulp-notify gulp-rename gulp-livereload gulp-cache gulp-concat-css --save-dev
+3. install all dependencies
+sudo npm install
 
 6. install gem
 sudo npm install gem
