@@ -20,7 +20,7 @@ var config = {
         srcPath:{
                 cssPath:'../../../cvaccplusstorefront/web/webroot/_ui/desktop/theme-black/css',
                 sassPath: 'sass',
-                headerCssPath: ['../../../cvaccplusstorefront/web/webroot/_ui/desktop/common/css/*.css','../../../cvaccplusstorefront/web/webroot/_ui/desktop/theme-black/css/normalize.min.css','../../../cvaccplusstorefront/web/webroot/_ui/addons/searchandizing/desktop/theme-black/css/searchandizing.css'],
+                headerCssPath: ['../../../cvaccplusstorefront/web/webroot/_ui/addons/searchandizing/desktop/theme-black/css/searchandizing.css','../../../cvaccplusstorefront/web/webroot/_ui/desktop/theme-black/css/normalize.min.css','../../../cvaccplusstorefront/web/webroot/_ui/desktop/common/css/jquery.*.css'],
                 combinedCssPath:['../../../cvaccplusstorefront/web/webroot/_ui/desktop/theme-black/css/header-vendor.css','../../../cvaccplusstorefront/web/webroot/_ui/desktop/theme-black/css/changes.css']
         }
 
@@ -38,7 +38,6 @@ gulp.task('compass',function(){
             css:config.srcPath.cssPath, 
             sass:config.srcPath.sassPath
         }))
-        .pipe(minifycss())
         .pipe(gulp.dest(config.srcPath.cssPath))
 
 });
