@@ -32,12 +32,13 @@ gulp.task('test',function(){});
            COMPASS
 *****************************/
 gulp.task('compass',function(){
-        gulp.src('sass/*.scss')
+        return gulp.src('sass/*.scss')
         .pipe(compass({
             config_file: config.compass.config,
             css:config.srcPath.cssPath, 
             sass:config.srcPath.sassPath
         }))
+        .pipe(minifycss())
         .pipe(gulp.dest(config.srcPath.cssPath))
 
 });
@@ -46,7 +47,7 @@ gulp.task('compass',function(){
           HeaderCSS
 ****************************/
 gulp.task('headerCssHandler',function(){
-        gulp.src(config.srcPath.headerCssPath)
+        return gulp.src(config.srcPath.headerCssPath)
         .pipe(concatCss('header-vendor.css'))
         .pipe(minifycss())
         .pipe(gulp.dest(config.srcPath.cssPath))
@@ -58,9 +59,9 @@ gulp.task('headerCssHandler',function(){
            SCRIPT
 *****************************/
 gulp.task('script',function(){
-
+    
 });
 
 gulp.task('cssbuild',function(){
-
+    gulp.start('headerCssHandler','compass')
 });
